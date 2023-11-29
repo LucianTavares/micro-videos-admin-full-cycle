@@ -20,6 +20,11 @@ export type CategoryCreateCommand = {
   is_active?: boolean;
 }
 
+export type CategoryUpdateCommand = {
+  name?: string;
+  description?: string;
+}
+
 export class Category extends Entity {
 
   category_id: Uuid;
@@ -41,6 +46,12 @@ export class Category extends Entity {
     const category = new Category(props)
     Category.validate(category)
     return category
+  }
+
+  updateCategory(props: CategoryUpdateCommand): void {
+    this.name = props.name;
+    this.description = props.description;
+    Category.validate(this);
   }
 
   changeName(name: string): void {

@@ -172,6 +172,57 @@ describe('Category Unit Tests', () => {
       expect(category.is_active).toBeFalsy()
     })
   })
+
+  describe('update Category method', () => {
+
+    test('should update all attributes in Category', () => {
+      
+      const category = Category.create({
+        name: 'Movie',
+        description: 'Nice Movie'
+      })
+
+      category.updateCategory({
+        name: 'Serie',
+        description: 'Funny serie'
+      })
+
+      expect(category.name).toBe('Serie')
+      expect(category.description).toBe('Funny serie')
+      expect(validateSpy).toHaveBeenCalledTimes(2)
+    })
+
+    test('should update name of Category', () => {
+      
+      const category = Category.create({
+        name: 'Movie',
+        description: 'Nice Movie'
+      })
+
+      category.updateCategory({
+        name: 'Serie'
+      })
+
+      expect(category.name).toBe('Serie')
+      expect(validateSpy).toHaveBeenCalledTimes(2)
+    })
+
+    test('should update description of Category', () => {
+      
+      const category = Category.create({
+        name: 'Movie',
+        description: 'Nice Movie'
+      })
+
+      category.updateCategory({
+        name: 'Movie',
+        description: 'Funny serie'
+      })
+
+      expect(category.description).toBe('Funny serie')
+      expect(validateSpy).toHaveBeenCalledTimes(2)
+    })
+  })
 })
 
 describe('Category Validator', () => {
@@ -206,3 +257,4 @@ describe('Category Validator', () => {
     })
   })
 })
+
