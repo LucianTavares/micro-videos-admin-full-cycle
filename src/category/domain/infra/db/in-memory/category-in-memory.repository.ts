@@ -1,16 +1,20 @@
-import { SortDirection } from "../../../../shared/domain/repository/search-params";
-import { Uuid } from "../../../../shared/domain/value-objects/uuid.vo";
-import { InMemoryRepository, InMemorySearchableRepository } from "../../../../shared/infra/db/in-memory/in-memory.repository";
-import { Category } from "../../category.entity";
+import { SortDirection } from "../../../../../shared/domain/repository/search-params";
+import { Uuid } from "../../../../../shared/domain/value-objects/uuid.vo";
+import { InMemoryRepository, InMemorySearchableRepository } from "../../../../../shared/infra/db/in-memory/in-memory.repository";
+import { Category } from "../../../category.entity";
+import { CategoryFilter, ICategoryRespository } from "../../../category.repository";
 
 export class CategoryInMemoryRepository extends InMemorySearchableRepository<
   Category,
   Uuid
-> {
+> implements ICategoryRespository {
 
   sortableFields: string[] = ['name', 'created_at'];
 
-  protected async applyFilter(items: Category[], filter: string): Promise<Category[]> {
+  protected async applyFilter(
+    items: Category[],
+    filter: CategoryFilter
+  ): Promise<Category[]> {
     if (!filter) {
       return items;
     }
