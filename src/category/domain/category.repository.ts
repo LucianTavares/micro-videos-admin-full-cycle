@@ -14,7 +14,7 @@ export class CategorySearchResult extends SearchResult<Category> {
 
 }
 
-export interface ICategoryRespository extends ISearchableRepository<
+export interface ICategoryRepository extends ISearchableRepository<
   Category,
   Uuid,
   CategoryFilter,

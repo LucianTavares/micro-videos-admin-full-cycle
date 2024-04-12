@@ -2,12 +2,12 @@ import { SortDirection } from "../../../../../shared/domain/repository/search-pa
 import { Uuid } from "../../../../../shared/domain/value-objects/uuid.vo";
 import { InMemoryRepository, InMemorySearchableRepository } from "../../../../../shared/infra/db/in-memory/in-memory.repository";
 import { Category } from "../../../category.entity";
-import { CategoryFilter, ICategoryRespository } from "../../../category.repository";
+import { CategoryFilter, ICategoryRepository } from "../../../category.repository";
 
 export class CategoryInMemoryRepository extends InMemorySearchableRepository<
   Category,
   Uuid
-> implements ICategoryRespository {
+> implements ICategoryRepository {
 
   sortableFields: string[] = ['name', 'created_at'];
 

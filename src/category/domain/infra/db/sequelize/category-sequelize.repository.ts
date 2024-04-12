@@ -1,12 +1,12 @@
 import { NotFoundError } from "../../../../../shared/domain/errors/not-found.error";
 import { Uuid } from "../../../../../shared/domain/value-objects/uuid.vo";
 import { Category } from "../../../category.entity";
-import { CategorySearchParams, CategorySearchResult, ICategoryRespository } from "../../../category.repository";
+import { CategorySearchParams, CategorySearchResult, ICategoryRepository } from "../../../category.repository";
 import { CategoryModelMapper } from "./category-model-mapper";
 import { CategoryModel } from "./category.model";
 import { Op } from "sequelize";
 
-export class CategorySequelizeRepository implements ICategoryRespository {
+export class CategorySequelizeRepository implements ICategoryRepository {
 
   sortableFields: string[] = ['name', 'created_at'];
 
